@@ -6,6 +6,7 @@ export enum MainPageCategory {
 }
 
 export class MainPageModel {
+  _id: number;
   firstLevelCategory: MainPageCategory;
   secondLevelCategory: string;
   title: string;
