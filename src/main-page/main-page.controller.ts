@@ -8,11 +8,14 @@ import {
   Patch,
   HttpCode,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { FindMainPageDto } from './dto/find-main-page.dto';
 import { MainPageModel } from './main-page.model';
 
 @Controller('main-page')
 export class MainPageController {
+  // constructor(private readonly configService: ConfigService) {}
+
   @Post('create')
   async create(@Body() dto: Omit<MainPageModel, '_id'>) {}
 
