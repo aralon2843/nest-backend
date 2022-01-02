@@ -26,4 +26,17 @@ export class ReviewService {
       .find({ productId: new Types.ObjectId(productId) })
       .exec();
   }
+
+  async deleteByProductId(productId: string): Promise<
+    {
+      ok?: number | undefined;
+      n?: number | undefined;
+    } & {
+      deletedCount?: number | undefined;
+    }
+  > {
+    return this.reviewModel
+      .deleteMany({ productId: new Types.ObjectId(productId) })
+      .exec();
+  }
 }

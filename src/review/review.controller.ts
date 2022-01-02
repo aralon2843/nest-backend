@@ -18,12 +18,12 @@ export class ReviewController {
 
   @Post('create')
   async create(@Body() dto: CreateReviewDto) {
-    this.reviewService.create(dto);
+    return this.reviewService.create(dto);
   }
 
   @Get('byProduct/:productId')
   async getByProduct(@Param('productId') productId: string) {
-    this.reviewService.findByProductId(productId);
+    return this.reviewService.findByProductId(productId);
   }
 
   @Delete(':id')
