@@ -8,6 +8,7 @@ async function bootstrap() {
     'mongodb+srv://root:qwertyslav1234@cluster0.5vdvn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   );
   app.setGlobalPrefix('api');
+  app.enableCors();
   await app.listen(3001);
 }
 bootstrap();
