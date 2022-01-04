@@ -24,7 +24,6 @@ export class AuthController {
     }
     return this.authService.createUser(dto);
   }
-
   @UsePipes(new ValidationPipe())
   @Post('login')
   @HttpCode(200)
