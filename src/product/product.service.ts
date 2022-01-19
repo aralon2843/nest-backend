@@ -54,20 +54,32 @@ export class ProductService {
             from: 'Review',
             localField: '_id',
             foreignField: 'productId',
-            as: 'review',
+            as: 'reviews',
           },
         },
         {
           $addFields: {
-            reviewCount: { $size: '$review' },
-            reviewAvg: { $avg: '$review.rating' },
+            reviewCount: { $size: '$reviews' },
+            reviewAvg: { $avg: '$reviews.rating' },
+            reviews: {
+              $function: {
+                body: `function (reviews) {
+                  reviews.sort(
+                    (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+                  );
+                  return reviews;
+                }`,
+                arg: ['@reviews'],
+                lang: 'js',
+              },
+            },
           },
         },
       ])
       .exec() as unknown as (ProductModel & {
-      review: ReviewModel[];
-      reviewCount: number;
-      reviewAvg: number;
+      reviews: ReviewModel[];
+      reviewsCount: number;
+      reviewsAvg: number;
     })[];
   }
 }
