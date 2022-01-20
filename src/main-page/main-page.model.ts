@@ -9,7 +9,7 @@ export enum MainPageCategory {
 
 export interface MainPageModel extends Base {}
 
-class Advantage {
+export class Advantage {
   @prop()
   title: string;
 
@@ -17,7 +17,7 @@ class Advantage {
   description: string;
 }
 
-class HhData {
+export class HhData {
   @prop()
   count: number;
 
@@ -48,7 +48,7 @@ export class MainPageModel extends TimeStamps {
   category: string;
 
   @prop({ type: () => HhData })
-  hh: HhData;
+  hh?: HhData;
 
   @prop({
     type: () => [Advantage],

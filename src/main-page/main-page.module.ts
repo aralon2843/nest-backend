@@ -2,6 +2,7 @@ import { TypegooseModule } from 'nestjs-typegoose';
 import { Module } from '@nestjs/common';
 import { MainPageController } from './main-page.controller';
 import { MainPageModel } from './main-page.model';
+import { MainPageService } from './main-page.service';
 
 @Module({
   controllers: [MainPageController],
@@ -15,5 +16,6 @@ import { MainPageModel } from './main-page.model';
       },
     ]),
   ],
+  providers: [MainPageService],
 })
 export class MainPageModule {}

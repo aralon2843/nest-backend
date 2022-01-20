@@ -58,5 +58,7 @@ export class ProductController {
   @UsePipes(new ValidationPipe())
   @Post('find')
   @HttpCode(200)
-  async find(@Body() dto: FindProductDto) {}
+  async find(@Body() dto: FindProductDto) {
+    return this.productService.findWithReviews(dto);
+  }
 }
