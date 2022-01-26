@@ -30,7 +30,7 @@ export class ReviewController {
     return this.reviewService.create(dto);
   }
 
-  @UsePipes(new ValidationPipe())
+  // @UsePipes(new ValidationPipe())
   @Post('notify')
   async notify(@Body() dto: CreateReviewDto) {
     const message =
